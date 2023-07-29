@@ -71,17 +71,13 @@ const InputKeywords = ({
   };
 
   const unifyEqualValues = (array) => {
-    const uniqueValues = [];
-    const indexValueObj = {};
+    const uniqueValues = array.reduce((acc, element) => {
+      const key = element.toLowerCase();
+      acc[key] = element;
+      return acc;
+    }, {});
 
-    for (const element of array) {
-      if (!indexValueObj.hasOwnProperty(element.toLowerCase())) {
-        indexValueObj[element] = uniqueValues.length;
-        uniqueValues.push(element);
-      }
-    }
-
-    return uniqueValues;
+    return Object.values(uniqueValues);
   };
 
   useEffect(() => {
