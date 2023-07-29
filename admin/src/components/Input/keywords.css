@@ -5,7 +5,7 @@
   min-height: 48px;
   width: 100%;
   padding: 0 8px;
-  border: 1px solid #4a4a6a;
+  border: 1px solid rgb(220, 220, 228);
   border-radius: 6px;
   &:focus-within {
     border: 1px solid #0052cc;
