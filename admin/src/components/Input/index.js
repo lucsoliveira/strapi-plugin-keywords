@@ -131,7 +131,11 @@ const InputKeywords = ({
         valueText={valueText}
         onAddTag={addTags}
       />
-      <KeywordsBox onRemoveTag={removeTags} selectedTags={selectedTags} />
+      <KeywordsBox
+        noTagsMessage={"No registered tag."}
+        onRemoveTag={removeTags}
+        selectedTags={selectedTags}
+      />
     </div>
   );
 };
