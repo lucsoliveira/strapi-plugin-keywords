@@ -5,7 +5,7 @@
  */
 
 import React, { useState, useEffect } from "react";
-import PropTypes, { node } from "prop-types";
+import PropTypes from "prop-types";
 import { useIntl } from "react-intl";
 import "./keywords.css";
 import { TextInput } from "@strapi/design-system";
@@ -107,15 +107,14 @@ const InputKeywords = ({
   const [maxLength, sextMaxLength] = useState(null);
   const [maxQuantityTags, setMaxQuantityTags] = useState(null);
   const [maxTagsExceded, setMaxTagsExceded] = useState(false);
+  const [isToUnifyEqualTags, setIsToUnifyEqualTags] = useState(false);
 
   useEffect(() => {
     if (attribute && attribute !== "") {
-      sextMaxLength(
-        attribute.options.maxLength ? attribute.options.maxLength : null
-      );
-      setMaxQuantityTags(
-        attribute.options.maxTags ? attribute.options.maxTags : null
-      );
+      const { maxLength, maxTags, unifyEqualTags } = attribute?.options;
+      sextMaxLength(maxLength ? maxLength : null);
+      setMaxQuantityTags(maxTags ? maxTags : null);
+      setIsToUnifyEqualTags(unifyEqualTags ? unifyEqualTags : false);
     }
   }, [attribute]);
 
@@ -147,10 +146,31 @@ const InputKeywords = ({
     }
   };
 
+  const unifyEqualValues = (array) => {
+    const uniqueValues = [];
+    const indexValueObj = {};
+
+    for (const element of array) {
+      if (!indexValueObj.hasOwnProperty(element.toLowerCase())) {
+        indexValueObj[element] = uniqueValues.length;
+        uniqueValues.push(element);
+      }
+    }
+
+    return uniqueValues;
+  };
+
   useEffect(() => {
     if (valueToSave && valueToSave !== null) {
+      let valueAux;
+
+      if (isToUnifyEqualTags) {
+        valueAux = unifyEqualValues(valueToSave);
+      } else {
+        valueAux = valueToSave;
+      }
       onChange({
-        target: saveDataObj(name, valueToSave, attribute.type),
+        target: saveDataObj(name, valueAux, attribute.type),
       });
     }
   }, [valueToSave]);
