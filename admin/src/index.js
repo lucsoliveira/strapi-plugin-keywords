@@ -26,14 +26,9 @@ export default {
       },
       options: {
         base: [
-          /*
-            Declare settings to be added to the "Base settings" section
-            of the field in the Content-Type Builder
-          */
           {
             sectionTitle: {
-              // Add a "Format" settings section
-              id: "color-picker.color.section.format",
+              id: "custom-field-keywords.color.section.format",
               defaultMessage: "Options",
             },
             items: [
@@ -53,23 +48,39 @@ export default {
                   defaultMessage: "Max quantity tags",
                 },
               },
+            ],
+          },
+          {
+            sectionTitle: {
+              id: "custom-field-keywords.color.section.format",
+              defaultMessage: "Funcionalidades",
+            },
+            items: [
               {
                 name: "required",
                 type: "checkbox",
                 intlLabel: {
-                  id: "input.currency.settings.required.label",
+                  id: "custom-field-keywords.settings.required.label",
                   defaultMessage: "Campo obrigatório",
+                },
+              },
+              {
+                name: "options.unifyEqualTags",
+                type: "checkbox",
+                intlLabel: {
+                  id: "form.attribute.item.uniqueField",
+                  defaultMessage: "Unify Equal Tags",
+                },
+                description: {
+                  id: "form.attribute.item.uniqueField.description",
+                  defaultMessage:
+                    "When saving, it will be checked if there are equal tags. If so, only one value will be saved.",
                 },
               },
             ],
           },
         ],
-        advanced: [
-          /*
-              Declare settings to be added to the "Advanced settings" section
-              of the field in the Content-Type Builder
-            */
-        ],
+        advanced: [],
         // validator: (args) => ({
         //   format: yup.string().required({
         //     id: "options.color-picker.format.error",
