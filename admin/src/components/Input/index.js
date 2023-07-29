@@ -1,90 +1,15 @@
-/**
- *
- * Initializer
- *
- */
-
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { useIntl } from "react-intl";
 import "./keywords.css";
-import { TextInput } from "@strapi/design-system";
+import { KeywordsBox } from "../KeywordsBox";
+import { InputTextTag } from "../InputTextTag";
 const saveDataObj = (name, value, type) => {
   return {
     name: name,
     value: JSON.stringify(value),
     type: type,
   };
-};
-
-const InputTextTag = ({
-  label,
-  name,
-  description,
-  maxLength,
-  isMaxTagsExceded,
-  error,
-  placeHolder,
-  valueText,
-  setValueText,
-  onAddTag,
-  required,
-}) => {
-  return (
-    <div>
-      <TextInput
-        disabled={isMaxTagsExceded}
-        placeholder={placeHolder}
-        hint={description}
-        label={label}
-        required={required}
-        error={
-          maxLength && valueText.length > maxLength
-            ? "Tag max length exceded"
-            : undefined || error
-            ? error
-            : undefined
-        }
-        onChange={(e) => setValueText(e.target.value)}
-        onKeyUp={(event) => {
-          event.key === " " ? onAddTag(event) : null;
-        }}
-        value={valueText}
-      />
-    </div>
-  );
-};
-
-const KeywordsBox = ({ selectedTags, onRemoveTag }) => {
-  return (
-    <div>
-      <div
-        className="tags-input"
-        style={{
-          marginTop: "15px",
-        }}
-      >
-        <ul id="tags">
-          {!selectedTags || selectedTags.length === 0 ? (
-            <div>Não há tags</div>
-          ) : (
-            <div></div>
-          )}
-          {selectedTags.map((tag, index) => (
-            <li key={index} className="tag">
-              <span className="tag-title">{tag}</span>
-              <span
-                className="tag-close-icon"
-                onClick={() => onRemoveTag(index)}
-              >
-                x
-              </span>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
-  );
 };
 
 const InputKeywords = ({
@@ -100,7 +25,6 @@ const InputKeywords = ({
   required,
 }) => {
   const { formatMessage } = useIntl();
-  const [initialTags, setInitialTags] = useState([]);
   const [selectedTags, setSelectedTags] = useState([]);
   const [valueToSave, setValueToSave] = useState(null);
   const [valueText, setValueText] = useState("");

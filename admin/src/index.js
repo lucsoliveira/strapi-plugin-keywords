@@ -81,12 +81,6 @@ export default {
           },
         ],
         advanced: [],
-        // validator: (args) => ({
-        //   format: yup.string().required({
-        //     id: "options.color-picker.format.error",
-        //     defaultMessage: "The color format is required",
-        //   }),
-        // }),
       },
     });
   },
