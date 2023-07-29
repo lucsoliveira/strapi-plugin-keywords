@@ -1,12 +1,12 @@
 {
   "name": "custom-field-keywords",
-  "version": "0.0.0",
-  "description": "This is the description of the plugin.",
+  "version": "0.0.1",
+  "description": "Custom Field Plugin for Keywords Tags.",
   "strapi": {
     "name": "custom-field-keywords",
-    "description": "Description of Custom Field Keywords plugin",
+    "description": "Custom Field Plugin for Keywords Tags",
     "kind": "plugin",
-    "displayName": "Custom Field Keywords"
+    "displayName": "Custom Field Plugin for Keywords Tags"
   },
   "dependencies": {
     "@strapi/design-system": "^1.6.3",
@@ -27,13 +27,9 @@
     "styled-components": "^5.3.6"
   },
   "author": {
-    "name": "A Strapi developer"
+    "name": "Lucas de Oliveira Pereira"
   },
-  "maintainers": [
-    {
-      "name": "A Strapi developer"
-    }
-  ],
+  "maintainers": [],
   "engines": {
     "node": ">=14.19.1 <=18.x.x",
     "npm": ">=6.0.0"
