@@ -1,2 +1,3 @@
-# strapi-plugin-keywords
-A strapi custom field for keywords/tags strings.
+# Strapi plugin custom-field-keywords
+
+A quick description of custom-field-keywords.
