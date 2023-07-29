@@ -1,6 +1,6 @@
 {
   "name": "custom-field-keywords",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Custom Field Plugin for Keywords Tags.",
   "strapi": {
     "name": "custom-field-keywords",
